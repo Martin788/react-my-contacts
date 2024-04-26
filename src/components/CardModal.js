@@ -1,10 +1,15 @@
 import { useState } from "react";
 import Modal from "react-modal";
 import { AiTwotoneMail, AiFillPhone, AiFillMobile } from "react-icons/ai";
-import { MapContainer, TileLayer } from "react-leaflet";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const CardModal = ({ contact }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const mapStyles = {
+    height: "400px",
+    width: "400px",
+  };
+  const googleMapsApiKey = "AIzaSyCdmKLc3GF7W-blwzOpaEcwgHnunoCG7ZU";
   return (
     <div>
       <a
@@ -51,15 +56,23 @@ const CardModal = ({ contact }) => {
           </p>
         </div>
         <div className="dib">
-          <MapContainer
-            center={[
-              contact.location.coordinates.latitude,
-              contact.location.coordinates.longitude,
-            ]}
-            zoom={12}
-          >
-            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          </MapContainer>
+          <LoadScript googleMapsApiKey={googleMapsApiKey}>
+            <GoogleMap
+              mapContainerStyle={mapStyles}
+              center={{
+                lat: parseFloat(contact.location.coordinates.latitude),
+                lng: parseFloat(contact.location.coordinates.longitude),
+              }}
+              zoom={12}
+            >
+              <Marker
+                position={{
+                  lat: parseFloat(contact.location.coordinates.latitude),
+                  lng: parseFloat(contact.location.coordinates.longitude),
+                }}
+              />
+            </GoogleMap>
+          </LoadScript>
         </div>
         <div className="tc">
           <a
