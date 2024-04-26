@@ -6,11 +6,13 @@ import ErrorFallback from "./components/ErrorFallback";
 import {Toast} from '@capacitor/toast';
 import SearchInput from 'react-search-input';
 import Fuse from 'fuse.js';
+import Filters from './components/Filters';
 
 function App() {
   Toast.show({text: 'Hello!'});
   const [contacts, setContacts] = useState([]);
   const [filteredContacts, setFilteredContacts] = useState([]);
+  const [searchField, setSearchField] = useState('name.first');
 
   useEffect(() => {
     fetch("https://randomuser.me/api/?results=20")
@@ -26,24 +28,49 @@ function App() {
 
   const handleSearch = (searchTerm) => {
     if (!searchTerm) {
-      setFilteredContacts(contacts); // Si no hay término de búsqueda, muestra todos los contactos
+      setFilteredContacts(contacts);
       return;
     }
 
     const fuse = new Fuse(contacts, {
-      keys: ['name.first'],
+      keys: [searchField],
       tokenize: true,
       matchAllTokens: true,
-      threshold: 0.3
+      threshold: 0,
+      ignoreLocation: true
     });
 
     const results = fuse.search(searchTerm);
     setFilteredContacts(results.map(result => result.item));
   };
 
+  const handleSort = (order) => {
+    const sortedContacts = [...filteredContacts].sort((a, b) => {
+      if (order === 'asc') {
+        return (a.name["first"] + " " + a.name["last"]).localeCompare(
+          b.name["first"] + " " + b.name["last"]
+        );
+      } else {
+        return (b.name["first"] + " " + b.name["last"]).localeCompare(
+          a.name["first"] + " " + a.name["last"]
+        );
+      }
+    });
+
+    setFilteredContacts(sortedContacts);
+  };
+
+  const handleFieldChange = (field) => {
+    setSearchField(field);
+    handleSearch('');
+  };
+
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <SearchInput className="search-input" onChange={handleSearch} />
+      <div>
+        <SearchInput className="search-input" onChange={handleSearch} />
+        <Filters handleSort={handleSort} handleFieldChange={handleFieldChange} />
+      </div>
       <Scroll>
         <CardList contacts={filteredContacts} />
       </Scroll>
