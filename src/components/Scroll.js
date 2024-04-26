@@ -1,6 +1,6 @@
 const Scroll = ({ children }) => {
   return (
-    <div className="vh-75 ba bw2 br4 b--blue overflow-y-scroll">{children}</div>
+    <div class="h-75vh border-2 border-blue rounded-lg border-solid overflow-y-scroll">{children}</div>
   );
 };
 

@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import 'tachyons';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 
 defineCustomElements(window);

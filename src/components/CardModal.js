@@ -13,26 +13,26 @@ const CardModal = ({ contact }) => {
   return (
     <div>
       <a
-        className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-green"
+        class="inline-block text-sm font-medium px-3 py-2 mb-2 rounded-md text-white bg-dark-green hover:scale-105"
         onClick={() => setModalOpen(true)}
         href="#0"
       >
         More info
       </a>
       <Modal
-        className="ba br4 pa4 mw8 mt6 center bg-white"
+        class="border rounded-lg p-4 max-w-8xl mt-6 mx-auto bg-white"
         isOpen={modalOpen}
         onRequestClose={() => setModalOpen(false)}
         ariaHideApp={false}
       >
-        <h2 className="tc">
+        <h2 class="text-center">
           {contact.name.title +
             " " +
             contact.name.first +
             " " +
             contact.name.last}
         </h2>
-        <div className="dib mr5">
+        <div class="inline-block mr-5">
           <img alt="{contact.picture.large}" src={contact.picture.large} />
           <p>Gender: {contact.gender}</p>
           <p>
@@ -55,7 +55,7 @@ const CardModal = ({ contact }) => {
             <AiFillMobile /> Cell: {contact.cell}
           </p>
         </div>
-        <div className="dib">
+        <div class="inline-block">
           <LoadScript googleMapsApiKey={googleMapsApiKey}>
             <GoogleMap
               mapContainerStyle={mapStyles}
@@ -74,9 +74,9 @@ const CardModal = ({ contact }) => {
             </GoogleMap>
           </LoadScript>
         </div>
-        <div className="tc">
+        <div class="text-center">
           <a
-            className="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-blue"
+            class="text-sm font-medium rounded-md px-3 py-2 mb-2 inline-block text-white bg-dark-blue"
             onClick={() => setModalOpen(false)}
             href="#0"
           >

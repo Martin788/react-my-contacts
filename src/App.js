@@ -82,14 +82,24 @@ function App() {
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <div>
-        <SearchInput className="search-input" onChange={handleSearch} />
-        <Filters
-          handleSort={handleSort}
-          handleFieldChange={handleFieldChange}
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+        <div class="md:flex md:items-center md:space-x-2">
+          <SearchInput
+            class="border border-gray-300 rounded-lg py-2 px-4 focus:outline-none focus:ring focus:border-blue-300"
+            onChange={handleSearch}
+          />
+          <Filters
+            class="flex items-center space-x-3 mb-3 md:mb-0"
+            handleSort={handleSort}
+            handleFieldChange={handleFieldChange}
+          />
+        </div>
+        <ContactExportButton
+          class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg"
+          exportContacts={exportContactsToJson}
         />
-        <ContactExportButton exportContacts={exportContactsToJson} />
       </div>
+
       <Scroll>
         <CardList contacts={filteredContacts} />
       </Scroll>
