@@ -3,51 +3,49 @@ import CardList from "./components/CardList";
 import Scroll from "./components/Scroll";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "./components/ErrorFallback";
-import Searcher from "./components/Searcher";
-import {Toast} from '@capacitor/toast'
+import {Toast} from '@capacitor/toast';
+import SearchInput from 'react-search-input';
+import Fuse from 'fuse.js';
 
 function App() {
   Toast.show({text: 'Hello!'});
   const [contacts, setContacts] = useState([]);
+  const [filteredContacts, setFilteredContacts] = useState([]);
 
   useEffect(() => {
     fetch("https://randomuser.me/api/?results=20")
       .then((response) => response.json())
-      .then((contacts) => setContacts(contacts.results));
+      .then((contacts) => {
+        setContacts(contacts.results);
+        setFilteredContacts(contacts.results);
+      })
+      .catch((error) => {
+        console.error("Error fetching contacts:", error);
+      });
   }, []);
 
-  const [searchField, setSearchField] = useState("");
-  const onSearchChange = (event) => {
-    setSearchField(event.target.value);
-  };
-  const searchedContacts = contacts.filter((contact) => {
-    return (contact.name["first"] + " " + contact.name["last"])
-      .toLowerCase()
-      .includes(searchField.toLowerCase());
-  });
+  const handleSearch = (searchTerm) => {
+    if (!searchTerm) {
+      setFilteredContacts(contacts); // Si no hay término de búsqueda, muestra todos los contactos
+      return;
+    }
 
-  const onAZ = () => {
-    let az = contacts.sort((a, b) => {
-      return (a.name["first"] + " " + a.name["last"]).localeCompare(
-        b.name["first"] + " " + b.name["last"]
-      );
+    const fuse = new Fuse(contacts, {
+      keys: ['name.first'],
+      tokenize: true,
+      matchAllTokens: true,
+      threshold: 0.3
     });
-    setContacts([...az]); //clone the list
-  };
-  const onZA = () => {
-    let za = contacts.sort((a, b) => {
-      return (b.name["first"] + " " + b.name["last"]).localeCompare(
-        a.name["first"] + " " + a.name["last"]
-      );
-    });
-    setContacts([...za]); //clone the list
+
+    const results = fuse.search(searchTerm);
+    setFilteredContacts(results.map(result => result.item));
   };
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <Searcher searchChange={onSearchChange} az={onAZ} za={onZA} />
+      <SearchInput className="search-input" onChange={handleSearch} />
       <Scroll>
-        <CardList contacts={searchedContacts} />
+        <CardList contacts={filteredContacts} />
       </Scroll>
     </ErrorBoundary>
   );
