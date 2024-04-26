@@ -4,6 +4,11 @@
   "homepage": "https://martin788.github.io/react-my-contacts",
   "private": true,
   "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/core": "^6.0.0",
+    "@capacitor/ios": "^6.0.0",
+    "@capacitor/toast": "^6.0.0",
+    "@ionic/pwa-elements": "^3.2.2",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -45,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "@capacitor/cli": "^6.0.0",
     "gh-pages": "^6.1.1"
   }
 }

@@ -4,8 +4,10 @@ import Scroll from "./components/Scroll";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "./components/ErrorFallback";
 import Searcher from "./components/Searcher";
+import {Toast} from '@capacitor/toast'
 
 function App() {
+  Toast.show({text: 'Hello!'});
   const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
