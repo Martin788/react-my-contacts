@@ -3,16 +3,17 @@ import CardList from "./components/CardList";
 import Scroll from "./components/Scroll";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "./components/ErrorFallback";
-import {Toast} from '@capacitor/toast';
-import SearchInput from 'react-search-input';
-import Fuse from 'fuse.js';
-import Filters from './components/Filters';
+import { Toast } from "@capacitor/toast";
+import SearchInput from "react-search-input";
+import Fuse from "fuse.js";
+import Filters from "./components/Filters";
+import ContactExportButton from "./components/ContactExportButton";
 
 function App() {
-  Toast.show({text: 'Hello!'});
+  Toast.show({ text: "Hello!" });
   const [contacts, setContacts] = useState([]);
   const [filteredContacts, setFilteredContacts] = useState([]);
-  const [searchField, setSearchField] = useState('name.first');
+  const [searchField, setSearchField] = useState("name.first");
 
   useEffect(() => {
     fetch("https://randomuser.me/api/?results=20")
@@ -37,16 +38,16 @@ function App() {
       tokenize: true,
       matchAllTokens: true,
       threshold: 0,
-      ignoreLocation: true
+      ignoreLocation: true,
     });
 
     const results = fuse.search(searchTerm);
-    setFilteredContacts(results.map(result => result.item));
+    setFilteredContacts(results.map((result) => result.item));
   };
 
   const handleSort = (order) => {
     const sortedContacts = [...filteredContacts].sort((a, b) => {
-      if (order === 'asc') {
+      if (order === "asc") {
         return (a.name["first"] + " " + a.name["last"]).localeCompare(
           b.name["first"] + " " + b.name["last"]
         );
@@ -62,14 +63,32 @@ function App() {
 
   const handleFieldChange = (field) => {
     setSearchField(field);
-    handleSearch('');
+    handleSearch("");
+  };
+
+  const exportContactsToJson = () => {
+    const contactsCopy = filteredContacts.map((contact) => ({ ...contact }));
+    const json = JSON.stringify(contactsCopy, null, 2);
+    const blob = new Blob([json], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "contacts.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   };
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <div>
         <SearchInput className="search-input" onChange={handleSearch} />
-        <Filters handleSort={handleSort} handleFieldChange={handleFieldChange} />
+        <Filters
+          handleSort={handleSort}
+          handleFieldChange={handleFieldChange}
+        />
+        <ContactExportButton exportContacts={exportContactsToJson} />
       </div>
       <Scroll>
         <CardList contacts={filteredContacts} />
