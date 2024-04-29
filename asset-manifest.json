@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-my-contacts/static/css/main.52a07607.css",
-    "main.js": "/react-my-contacts/static/js/main.e92809b5.js",
+    "main.css": "/react-my-contacts/static/css/main.09250759.css",
+    "main.js": "/react-my-contacts/static/js/main.ab9a7bcd.js",
     "static/js/683.21a020bb.chunk.js": "/react-my-contacts/static/js/683.21a020bb.chunk.js",
     "static/js/453.ff4034bb.chunk.js": "/react-my-contacts/static/js/453.ff4034bb.chunk.js",
     "static/js/875.a4ed19e9.chunk.js": "/react-my-contacts/static/js/875.a4ed19e9.chunk.js",
@@ -13,8 +13,8 @@
     "static/js/849.34639541.chunk.js": "/react-my-contacts/static/js/849.34639541.chunk.js",
     "static/media/Sagobi-d9GnV.ttf": "/react-my-contacts/static/media/Sagobi-d9GnV.85e4080e71a269b82bdd.ttf",
     "index.html": "/react-my-contacts/index.html",
-    "main.52a07607.css.map": "/react-my-contacts/static/css/main.52a07607.css.map",
-    "main.e92809b5.js.map": "/react-my-contacts/static/js/main.e92809b5.js.map",
+    "main.09250759.css.map": "/react-my-contacts/static/css/main.09250759.css.map",
+    "main.ab9a7bcd.js.map": "/react-my-contacts/static/js/main.ab9a7bcd.js.map",
     "683.21a020bb.chunk.js.map": "/react-my-contacts/static/js/683.21a020bb.chunk.js.map",
     "453.ff4034bb.chunk.js.map": "/react-my-contacts/static/js/453.ff4034bb.chunk.js.map",
     "875.a4ed19e9.chunk.js.map": "/react-my-contacts/static/js/875.a4ed19e9.chunk.js.map",
@@ -25,7 +25,7 @@
     "849.34639541.chunk.js.map": "/react-my-contacts/static/js/849.34639541.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.52a07607.css",
-    "static/js/main.e92809b5.js"
+    "static/css/main.09250759.css",
+    "static/js/main.ab9a7bcd.js"
   ]
 }
