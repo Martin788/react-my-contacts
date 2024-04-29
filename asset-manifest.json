@@ -1,16 +1,31 @@
 {
   "files": {
-    "main.css": "/react-my-contacts/static/css/main.f1afbe0d.css",
-    "main.js": "/react-my-contacts/static/js/main.024d44b3.js",
+    "main.css": "/react-my-contacts/static/css/main.52a07607.css",
+    "main.js": "/react-my-contacts/static/js/main.e92809b5.js",
+    "static/js/683.21a020bb.chunk.js": "/react-my-contacts/static/js/683.21a020bb.chunk.js",
     "static/js/453.ff4034bb.chunk.js": "/react-my-contacts/static/js/453.ff4034bb.chunk.js",
+    "static/js/875.a4ed19e9.chunk.js": "/react-my-contacts/static/js/875.a4ed19e9.chunk.js",
+    "static/js/616.6b4614ee.chunk.js": "/react-my-contacts/static/js/616.6b4614ee.chunk.js",
+    "static/js/320.585ebec9.chunk.js": "/react-my-contacts/static/js/320.585ebec9.chunk.js",
+    "static/js/950.c512f7ec.chunk.js": "/react-my-contacts/static/js/950.c512f7ec.chunk.js",
+    "static/js/604.d8885241.chunk.js": "/react-my-contacts/static/js/604.d8885241.chunk.js",
+    "static/js/92.f9024b27.chunk.js": "/react-my-contacts/static/js/92.f9024b27.chunk.js",
+    "static/js/849.34639541.chunk.js": "/react-my-contacts/static/js/849.34639541.chunk.js",
     "static/media/Sagobi-d9GnV.ttf": "/react-my-contacts/static/media/Sagobi-d9GnV.85e4080e71a269b82bdd.ttf",
     "index.html": "/react-my-contacts/index.html",
-    "main.f1afbe0d.css.map": "/react-my-contacts/static/css/main.f1afbe0d.css.map",
-    "main.024d44b3.js.map": "/react-my-contacts/static/js/main.024d44b3.js.map",
-    "453.ff4034bb.chunk.js.map": "/react-my-contacts/static/js/453.ff4034bb.chunk.js.map"
+    "main.52a07607.css.map": "/react-my-contacts/static/css/main.52a07607.css.map",
+    "main.e92809b5.js.map": "/react-my-contacts/static/js/main.e92809b5.js.map",
+    "683.21a020bb.chunk.js.map": "/react-my-contacts/static/js/683.21a020bb.chunk.js.map",
+    "453.ff4034bb.chunk.js.map": "/react-my-contacts/static/js/453.ff4034bb.chunk.js.map",
+    "875.a4ed19e9.chunk.js.map": "/react-my-contacts/static/js/875.a4ed19e9.chunk.js.map",
+    "616.6b4614ee.chunk.js.map": "/react-my-contacts/static/js/616.6b4614ee.chunk.js.map",
+    "320.585ebec9.chunk.js.map": "/react-my-contacts/static/js/320.585ebec9.chunk.js.map",
+    "950.c512f7ec.chunk.js.map": "/react-my-contacts/static/js/950.c512f7ec.chunk.js.map",
+    "604.d8885241.chunk.js.map": "/react-my-contacts/static/js/604.d8885241.chunk.js.map",
+    "849.34639541.chunk.js.map": "/react-my-contacts/static/js/849.34639541.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f1afbe0d.css",
-    "static/js/main.024d44b3.js"
+    "static/css/main.52a07607.css",
+    "static/js/main.e92809b5.js"
   ]
 }
